@@ -48,21 +48,23 @@
     <a href="https://www.bbc.co.uk/news/england">Learn More(by arnav jain)</a>
   </div>
   <script>
-    // Function to set a new random background image from Unsplash
+    // Function to set a new random background image from Unsplash every 5 seconds
     function setRandomBackground() {
-      // Fetch a random image from Unsplash at the desired resolution
-      fetch('https://source.unsplash.com/random/1920x1080')
-        .then((response) => {
-          // Use the URL of the fetched image as the new background
-          document.body.style.backgroundImage = 'url(' + response.url + ')';
-        })
-        .catch((error) => {
-          console.error('Error fetching random Unsplash image:', error);
-        });
+      setInterval(() => {
+        // Fetch a random image from Unsplash at the desired resolution
+        fetch('https://source.unsplash.com/random/1920x1080')
+          .then((response) => {
+            // Use the URL of the fetched image as the new background
+            document.body.style.backgroundImage = 'url(' + response.url + ')';
+          })
+          .catch((error) => {
+            console.error('Error fetching random Unsplash image:', error);
+          });
+      }, 5000); // Set interval to 5 seconds (5000 milliseconds)
     }
 
-    // Call the function on page load
-    window.onload = setRandomBackground;
+    // Call the function to start changing the background
+    setRandomBackground();
   </script>
 </body>
 </html>
